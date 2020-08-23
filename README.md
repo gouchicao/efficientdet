@@ -1,2 +1,1 @@
-# efficientdet
-Google AutoML EfficientDet
+# Google AutoML EfficientDet
