@@ -1,0 +1,32 @@
+FROM tensorflow/tensorflow:2.3.0-gpu-jupyter
+LABEL maintainer="wang-junjian@qq.com"
+
+WORKDIR /
+RUN git clone --depth 1 --recurse-submodules https://github.com/google/automl.git
+
+#x86_64-linux-gnu-gcc: error: pycocotools/_mask.c: No such file or directory
+#x86_64-linux-gnu-gcc: fatal error: no input files
+#error: command 'x86_64-linux-gnu-gcc' failed with exit status 1
+#ERROR: Failed building wheel for pycocotools
+RUN pip install pycocotools --no-cache-dir
+
+WORKDIR /automl/efficientdet
+RUN pip install -r requirements.txt
+RUN pip install lxml --no-cache-dir
+
+ADD models/efficientdet-d0 efficientdet-d0/
+ADD models/efficientdet-d1 efficientdet-d1/
+ADD models/efficientdet-d2 efficientdet-d2/
+ADD models/efficientdet-d3 efficientdet-d3/
+ADD models/efficientdet-d4 efficientdet-d4/
+ADD models/efficientdet-d5 efficientdet-d5/
+ADD models/efficientdet-d6 efficientdet-d6/
+ADD models/efficientdet-d7 efficientdet-d7/
+ADD models/efficientdet-d7x efficientdet-d7x/
+
+ADD VOCtrainval_11-May-2012/ /VOCtrainval_11-May-2012/
+
+ADD dataset_custom/ dataset_custom/
+ADD voc_config.yaml voc_config.yaml
+
+RUN apt install nano

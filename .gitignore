@@ -1,3 +1,6 @@
+models/
+VOCtrainval_11-May-2012/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

@@ -1,0 +1,6 @@
+num_classes: 3
+var_freeze_expr: '(efficientnet|fpn_cells|resample_p6)'
+label_map: {1: aeroplane, 2: bicycle}
+learning_rate: 0.002
+lr_warmup_init: 0.0002
+clip_gradients_norm: 5.0
